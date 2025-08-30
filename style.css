@@ -1,0 +1,239 @@
+
+:root{
+    --bg: #0f0f12;
+    --card: #15151a;
+    --accent: #c084fc; /* lilás */
+    --accent-2: #ff7eb6; /* rosa */
+    --text: #eaeaf1;
+    --muted: #b7b7c9;
+    --success: #72e6a6;
+    --danger: #ff6b6b;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+    margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(1200px 800px at 10% 10%, #1c1c24 0%, transparent 60%),
+                radial-gradient(1200px 800px at 90% 20%, #1b1425 0%, transparent 60%),
+                linear-gradient(180deg, #101014 0%, #0b0b0d 100%);
+    color:var(--text);
+    overflow-x:hidden;
+}
+a{color:inherit}
+.container{max-width:1100px; margin:0 auto; padding:24px}
+.header{
+    position:sticky; top:0; z-index:5; backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(21,21,26,.85) 0%, rgba(21,21,26,.55) 100%);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+.header-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.4px}
+.brand .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow)}
+.chip{font-size:12px; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:6px 10px; border-radius:999px}
+.btn{appearance:none; border:none; padding:12px 16px; border-radius:12px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#111; font-weight:700; cursor:pointer; box-shadow: var(--shadow); transition: transform .15s ease}
+.btn:hover{transform: translateY(-1px)}
+
+.hero{padding:48px 0 24px}
+.hero-card{background:rgba(21,21,26,.56); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:28px; box-shadow: var(--shadow); position:relative; overflow:hidden}
+.hero-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px}
+.badge{font-size:12px; color:#111; background:linear-gradient(135deg, var(--accent), var(--accent-2)); padding:6px 10px; border-radius:999px; font-weight:700}
+.title{font-size: clamp(28px, 4vw, 48px); margin:0 0 10px}
+.subtitle{color:var(--muted); margin:0 0 18px}
+
+.grid{display:grid; gap:18px}
+@media (min-width: 860px){
+    .grid-3{grid-template-columns: 1.2fr 1fr 1fr}
+}
+
+.card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow)}
+.card h3{margin:0 0 12px}
+.card p{color:var(--muted); margin:0}
+
+/* Galeria */
+.gallery{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
+@media (min-width: 700px){ .gallery{grid-template-columns: repeat(4, 1fr);} }
+.photo{position:relative; border-radius:14px; overflow:hidden; aspect-ratio: 3/4; background:#222; border:1px solid rgba(255,255,255,.06)}
+.photo img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.02)}
+
+/* Linha do tempo */
+.timeline{position:relative; padding-left:24px}
+.timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, var(--accent), transparent)}
+.tl-item{margin:14px 0; position:relative}
+.tl-dot{display: none; position:absolute; left:-1px; top:8px; width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 0 3px rgba(192,132,252,.2)}
+.tl-title{font-weight:700}
+.tl-text{color:var(--muted)}
+
+/* Recados */
+.note{background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0)); border:1px dashed rgba(255,255,255,.14); padding:14px; border-radius:12px}
+
+/* Footer */
+footer{opacity:.8; font-size:13px; color:var(--muted); padding:24px 16px; text-align:center}
+
+/* Overlay de senha */
+.lock{z-index: 5000; position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 20% 10%, #1c1c24 0%, transparent 60%), linear-gradient(180deg, #0b0b0d 0%, #070709 100%);}    
+.lock-card{z-index: 5001; width:min(520px, 94vw); background:rgba(21,21,26,.85); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:28px; box-shadow: var(--shadow)}
+.lock h2{margin-top:0}
+.field{display:flex; gap:10px; margin-top:10px}
+.input{flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16); background:#0f0f13; color:var(--text); outline:none}
+.hint{font-size:12px; color:var(--muted); margin-top:8px}
+.error{color:var(--danger); font-size:13px; margin-top:8px; display:none}
+
+/* Confete */
+.confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden}
+.piece{position:absolute; width:10px; height:14px; opacity:0; animation: drop 2.8s linear forwards}
+@keyframes drop{0%{transform:translateY(-40vh) rotate(0)} 100%{transform:translateY(110vh) rotate(720deg); opacity:1}}
+
+/* Ícones simples */
+.icon{width:18px; height:18px; vertical-align:-3px}
+
+.maps{
+    text-decoration: none;
+}
+
+.local{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.video{
+    display: none;
+}
+
+.video-principal{
+    width: 20%;
+    position: absolute;
+    opacity: 80%;
+    border-radius: 20px;
+    box-shadow: 0 0 24px black;
+}
+
+.video1{
+    top: 13.5%;
+    left: 79%;
+}
+.video2{
+    top: 13.5%;
+    left: 1%;
+}
+
+/* animação para sumir */
+@keyframes fadeOutContent {
+  0%   { opacity: 0; }   /* começa invisível */
+  10%  { opacity: 1; }   /* aparece suavemente */
+  70%  { opacity: 1; }   /* fica visível um tempo */
+  100% { opacity: 0; }   /* some suavemente */
+}
+
+/* Container do vídeo */
+@media (max-width: 700px){
+  
+    .video-principal{
+        display: none;
+    }
+}
+
+/* --- Lightbox (CSS-only) --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.lightbox:target {
+  display: flex;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,.7);
+}
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  text-decoration: none;
+  color: #fff;
+}
+.lightbox .prev,
+.lightbox .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  line-height: 1;
+  user-select: none;
+}
+.lightbox .prev { left: 20px; }
+.lightbox .next { right: 20px; }
+.lightbox .prev:hover,
+.lightbox .next:hover,
+.lightbox .close:hover { color: var(--accent-2); }
+
+@media (max-width: 700px){
+  .lightbox .prev, .lightbox .next {
+    font-size: 48px;
+    padding: 18px;
+  }
+}
+
+
+/* ===== Card de Vídeo dentro dos cards (somente mobile) ===== */
+.card-video{ display: none; }
+
+@media (max-width: 700px){
+  .card-video{ 
+    display: block; 
+    margin-bottom: 4px;
+  }
+  .video-card-wrapper{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #000;
+  }
+  .card-video .video{
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+/* Thumbnails da Linha do Tempo (usam o mesmo lightbox da galeria) */
+.timeline .photo{
+  display: inline-block;
+  width: 160px;
+  max-width: 45vw;
+  aspect-ratio: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  margin-top: 8px;
+}
+.timeline .photo img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform .25s ease;
+}
+.timeline .photo:hover img{
+  transform: scale(1.03);
+}

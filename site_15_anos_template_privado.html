@@ -1,0 +1,352 @@
+<!--
+Template: Site Privado para Parabéns de 15 Anos
+Como usar (busque por TODO):
+1) Senha: altere PASSCODE na linha ~80 (ex: const PASSCODE = "meusegredo").
+2) Nome, data e mensagem: edite os textos na seção HERO.
+3) Fotos: troque os src das imagens da GALERIA por arquivos seus (coloque-os na mesma pasta).
+4) Música: substitua "musica.mp3" pelo seu arquivo (ou remova a seção <audio>). 
+5) Cores/tema: ajuste variáveis CSS em :root.
+
+Atenção: Este "privado" é apenas um bloqueio simples (passcode no front-end). Para algo realmente protegido, use hospedagem com autenticação.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz 15 Anos ✨</title>
+  <meta name="description" content="Um site carinhoso para celebrar os 15 anos." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="lock" class="lock" aria-hidden="true">
+    <div class="lock-card">
+      <div class="brand" style="margin-bottom:12px">
+        <div class="logo"></div>
+        <div>Celebração de 15 anos<span style="opacity:.7"></span></div>
+      </div>
+      <h2>Área Privada</h2>
+      <p class="subtitle">Digite a senha 💜</p>
+      <div class="field">
+        <input id="pass" class="input" type="password" placeholder="Senha" autocomplete="current-password" />
+        <button id="enter" class="btn">Entrar</button>
+      </div>
+      <div id="err" class="error">Senha incorreta. Tente novamente.</div>
+      <div class="hint"> DICA: Nome da mãe de Sophia.</div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header-inner container">
+      <div class="brand"><div class="logo"></div><span>Festa 15 ✨</span></div>
+      <div class="chip">Site feito com muito amor!</div>
+    </div>
+  </header>
+  <div class="video-container">
+  <!-- Substitua o src pelo vídeo editado -->
+<video class="video1 video-principal" src="assets/videosophia.mp4" autoplay muted loop playsinline></video>
+    <video class="video2 video-principal" src="assets/videosophia2.mp4" autoplay muted loop playsinline></video>
+
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-badges">
+          <span class="badge">15 anos</span>
+          <span class="badge">Família & Amigos</span>
+          <span class="badge">Privado</span>
+        </div>
+        <h1 class="title">Feliz 15 anos, <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent">SOPHIA</span>! 🥳</h1>
+        <p class="subtitle">Hoje celebramos sua luz, sua coragem e todos os sonhos que estão nascendo. Que esta nova fase seja cheia de risos, amizades verdadeiras e metas alcançadas. Te amamos! 💜</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <button class="btn" onclick="scrollToId('galeria')">Ver galeria</button>
+          <button class="btn" onclick="scrollToId('recados')">Ler recados</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID PRINCIPAL -->
+    
+    <section class="grid grid-3">
+      <!-- Card de Vídeo (mobile-only) -->
+      <div class="card card-video mobile-only">
+        <h3>Vídeo da Sophia</h3>
+        <div class="video-card-wrapper">
+          <video class="video" src="assets/videosophia.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+
+      <div class="card local">
+        <h3>Quando</h3>
+        <p>Data: <strong>30/08/2025</strong></p>
+        <p>Local: <strong>Tv. Barão do Triunfo, 3193 - Marco</strong></p>
+        <button class="btn">
+          <a class="maps" href="https://www.google.com/maps/place/Tv.+Bar%C3%A3o+do+Triunfo,+3193+-+Marco,+Bel%C3%A9m+-+PA,+66093-050/@-1.4343911,-48.4643134,17z/data=!3m1!4b1!4m6!3m5!1s0x92a48c0cc792ca95:0xf635bdfba548dbf3!8m2!3d-1.4343911!4d-48.4594425!16s%2Fg%2F11xgv8yyfv?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D">Abrir no Maps</a>
+        </button> 
+      </div>
+      <div class="card">
+        <h3>Playlist</h3>
+        <p>Ative a música ambiente para entrar no clima ✨</p>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:10px">
+          <button class="btn" id="play">Tocar</button>
+          <button class="btn" id="pause" style="background:linear-gradient(135deg,#ffd166,#ff7eb6)">Pausar</button>
+        </div>
+        <audio id="song" src="Taylor Swift – August.mp3" preload="none"></audio>
+        <p class="hint">Taylor Swift – August</p>
+      </div>
+      <div class="card">
+        <h3>Mensagem da Família</h3>
+        <p>“Que seus 15 sejam o início das melhores aventuras. Conte sempre com a gente.”</p>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" style="margin-top:28px">
+      <div class="card">
+        <h3>Galeria</h3>
+        <div class="gallery" style="margin-top:12px">
+
+         <a href="#img1" class="photo"><img src="assets/img_2.jpg" alt="momentos 1" loading="lazy"></a>
+         <a href="#img2" class="photo"><img src="assets/img_1.jpg" alt="momentos 2" loading="lazy"></a>
+         <a href="#img3" class="photo"><img src="assets/img_8.jpg" alt="momentos 3" loading="lazy"></a>
+         <a href="#img4" class="photo"><img src="assets/img_4.jpg" alt="momentos 4" loading="lazy"></a>
+         <a href="#img5" class="photo"><img src="assets/img_5.jpg" alt="momentos 5" loading="lazy"></a>
+         <a href="#img6" class="photo"><img src="assets/img_6.jpg" alt="momentos 6" loading="lazy"></a>
+         <a href="#img7" class="photo"><img src="assets/img_7.jpg" alt="momentos 7" loading="lazy"></a>
+         <a href="#img8" class="photo"><img src="assets/img_3.jpg" alt="momentos 8" loading="lazy"></a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LINHA DO TEMPO -->
+    <section style="margin-top:18px">
+      <div class="card">
+        <h3>Linha do Tempo</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-title">2013 — Seu aniversário de 3 aninhos</div>
+            <div class="tl-text">Um amor que encheu a casa de alegria.</div>
+            <a href="#tl1" class="photo"><img class="photo" src="assets/sophia2013.jpg" alt="Sophia 2013" ></a>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-title">Em algum momento de sua vida...</div>
+            <div class="tl-text">O brilho no palco mostrou quem você é.</div>
+            <a href="#tl2" class="photo"><img class="photo" src="assets/img_9.jpeg" alt="Sophia 2013" ></a>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-title">2025 — 15 anos</div>
+            <div class="tl-text">Um novo capítulo começa agora. ✨</div>
+            <a href="#tl3" class="photo"><img class="photo" src="assets/img_2025.jpg" alt="Sophia 2013"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECADOS -->
+    <section id="recados" style="margin-top:18px">
+      <div class="card">
+        <h3>Recados</h3>
+        <div class="note">“Orgulho define! Que a vida te leve longe, sempre com saúde e amor.” — Mamãe</div>
+        <div class="note" style="margin-top:10px">“Você é minha melhor amiga! Feliz 15!” — Seu irmão Luiz</div>
+        <form id="form" class="note" style="margin-top:10px">
+          <label for="msg" style="display:block; font-weight:700; margin-bottom:6px">Deixe seu recado 💌</label>
+          <textarea id="msg" class="input" style="min-height:80px; resize:vertical" placeholder="Escreva algo especial..."></textarea>
+          <div style="display:flex; gap:10px; margin-top:10px">
+            <input id="by" class="input" placeholder="Seu nome" />
+            <button class="btn" type="submit">Publicar</button>
+          </div>
+          <div class="hint">(Os recados ficam salvos só nesta sessão do navegador — sem servidor.)</div>
+        </form>
+        <div id="board" style="display:grid; gap:10px; margin-top:12px"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Feito com carinho para celebrar 15 anos inesquecíveis. 💜
+  </footer>
+
+  <!-- Confete container -->
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <svg style="display:none">
+    <symbol id="heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12.1 21s-6.1-4.35-9.05-7.3C.65 11.3.5 8.2 2.05 6.35 3.6 4.5 6.2 4.4 8 6.1L12 10l4-3.9c1.8-1.7 4.4-1.6 5.95.25 1.55 1.85 1.4 4.95-.99 7.35C18.2 16.65 12.1 21 12.1 21z"/></symbol>
+  </svg>
+
+  <script>
+    // ====== CONFIGURAÇÃO (TODO) ======
+    const PASSCODE = "josilene"; // <- Altere a senha aqui
+
+    // ====== BLOQUEIO SIMPLES ======
+    const lock = document.getElementById('lock');
+    const input = document.getElementById('pass');
+    const btnEnter = document.getElementById('enter');
+    const err = document.getElementById('err');
+
+    function unlock(){
+      lock.style.display = 'none';
+      sessionStorage.setItem('unlocked15', '1');
+      boomConfetti();
+      setTimeout(() => boomConfetti(), 700);
+    }
+
+    function check(){
+      const ok = input.value.trim() === PASSCODE;
+      if(ok){ unlock(); }
+      else{ err.style.display = 'block'; input.focus(); input.select(); }
+    }
+
+    btnEnter.addEventListener('click', check);
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ check(); }});
+
+    // Já liberado?
+    if(sessionStorage.getItem('unlocked15')==='1'){ lock.style.display='none'; }
+
+    // ====== MUSICA ======
+    const song = document.getElementById('song');
+    document.getElementById('play').addEventListener('click', ()=> song.play());
+    document.getElementById('pause').addEventListener('click', ()=> song.pause());
+
+    // ====== RECADOS (localStorage) ======
+    const form = document.getElementById('form');
+    const board = document.getElementById('board');
+    const KEY = 'recados15';
+
+    function renderNotes(){
+      board.innerHTML = '';
+      const notes = JSON.parse(localStorage.getItem(KEY) || '[]');
+      notes.forEach(n => {
+        const el = document.createElement('div');
+        el.className = 'note';
+        el.innerHTML = `<div style="display:flex; align-items:center; gap:8px; margin-bottom:6px"><svg class="icon" aria-hidden="true"><use href="#heart"></use></svg><strong>${escapeHtml(n.by||'Anônimo')}</strong></div><div>${escapeHtml(n.msg)}</div>`;
+        board.appendChild(el);
+      });
+    }
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const msg = document.getElementById('msg').value.trim();
+      const by  = document.getElementById('by').value.trim();
+      if(!msg) return;
+      const notes = JSON.parse(localStorage.getItem(KEY) || '[]');
+      notes.unshift({msg, by, at: Date.now()});
+      localStorage.setItem(KEY, JSON.stringify(notes));
+      document.getElementById('msg').value='';
+      renderNotes();
+      boomConfetti(24);
+    });
+
+    renderNotes();
+
+    // ====== CONFETE ======
+    const confetti = document.getElementById('confetti');
+    function boomConfetti(count=60){
+      for(let i=0;i<count;i++){
+        const d = document.createElement('div');
+        d.className = 'piece';
+        d.style.left = Math.random()*100 + 'vw';
+        d.style.top  = (-10 - Math.random()*30) + 'vh';
+        d.style.background = randColor();
+        d.style.transform = `translateY(-40vh) rotate(${Math.random()*360}deg)`;
+        d.style.animationDelay = (Math.random()*0.6)+'s';
+        d.style.opacity = .9;
+        confetti.appendChild(d);
+        setTimeout(()=> d.remove(), 3200);
+      }
+    }
+    function randColor(){
+      const c = [
+        '#c084fc','#ff7eb6','#ffd166','#72e6a6','#9ad0f5'
+      ];
+      return c[Math.floor(Math.random()*c.length)];
+    }
+
+    // ====== UX ======
+    function scrollToId(id){
+      document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+    }
+  </script>
+
+  <!-- Lightboxes (CSS-only) -->
+  <div id="img1" class="lightbox">
+    <a href="#img8" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_2.jpg" alt="Foto 1 ampliada">
+    <a href="#img2" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#img1" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_1.jpg" alt="Foto 2 ampliada">
+    <a href="#img3" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#img2" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_8.jpg" alt="Foto 3 ampliada">
+    <a href="#img4" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img4" class="lightbox">
+    <a href="#img3" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_4.jpg" alt="Foto 4 ampliada">
+    <a href="#img5" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img5" class="lightbox">
+    <a href="#img4" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_5.jpg" alt="Foto 5 ampliada">
+    <a href="#img6" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img6" class="lightbox">
+    <a href="#img5" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_6.jpg" alt="Foto 6 ampliada">
+    <a href="#img7" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img7" class="lightbox">
+    <a href="#img6" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_7.jpg" alt="Foto 7 ampliada">
+    <a href="#img8" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="img8" class="lightbox">
+    <a href="#img7" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_3.jpg" alt="Foto 8 ampliada">
+    <a href="#img1" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+
+
+  <!-- Lightboxes da Linha do Tempo -->
+  <div id="tl1" class="lightbox">
+    <a href="#tl3" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/sophia2013.jpg" alt="Sophia 2013 ampliada">
+    <a href="#tl2" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="tl2" class="lightbox">
+    <a href="#tl1" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_9.jpeg" alt="Apresentação ampliada">
+    <a href="#tl3" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+  <div id="tl3" class="lightbox">
+    <a href="#tl2" class="prev" aria-label="Anterior">❮</a>
+    <img src="assets/img_2025.jpg" alt="Sophia 2025 ampliada">
+    <a href="#tl1" class="next" aria-label="Próxima">❯</a>
+    <a href="#" class="close" aria-label="Fechar">×</a>
+  </div>
+
+</body>
+</html>
